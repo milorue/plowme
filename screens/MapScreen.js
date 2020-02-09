@@ -87,7 +87,7 @@ export default class MapScreen extends React.Component{
                 return this.state.activeJobs.map((jobInfo) =>{
                     const latlng = {latitude: jobInfo.start.lat, longitude: jobInfo.start.lng}
                     return(
-                        <Marker key={jobInfo._id + jobInfo.userId} coordinate={latlng} color={this.determineRatingColor(jobInfo.clearRating)}/>
+                        <Marker key={jobInfo._id + jobInfo.userId} coordinate={latlng} pinColor={this.determineRatingColor(jobInfo.clearRating)}/>
                         )
 
                 })
@@ -99,7 +99,7 @@ export default class MapScreen extends React.Component{
         if(this.state.activeJobs !== null){
                 return this.state.activeJobs.map((jobInfo) =>{
                     return(
-                        <Marker key={jobInfo._id} coordinate={{latitude: jobInfo.end.lat, longitude: jobInfo.end.lng}} color={this.determineRatingColor(jobInfo.clearRating)}/>
+                        <Marker key={jobInfo._id} coordinate={{latitude: jobInfo.end.lat, longitude: jobInfo.end.lng}} pinColor={this.determineRatingColor(jobInfo.clearRating)}/>
                         )
 
                 })
@@ -114,7 +114,7 @@ export default class MapScreen extends React.Component{
                     <MapViewDirections key={jobInfo._id} apikey={ apiKey}
                         origin={{latitude: jobInfo.start.lat, longitude: jobInfo.start.lng}}
                         destination={{latitude: jobInfo.end.lat, longitude: jobInfo.end.lng}}
-                    strokeWidth={3}
+                    strokeWidth={1}
                     strokeColor={this.determineRatingColor(jobInfo.clearRating)}/>
                 )
             })
@@ -143,7 +143,7 @@ export default class MapScreen extends React.Component{
                     <MapViewDirections key={jobInfo._id} apikey={ apiKey}
                         origin={{latitude: jobInfo.start.lat, longitude: jobInfo.start.lng}}
                         destination={{latitude: jobInfo.end.lat, longitude: jobInfo.end.lng}}
-                    strokeWidth={3}
+                    strokeWidth={10}
                     strokeColor={this.determineRatingColor(jobInfo.clearRating)}/>
                 )
             })
@@ -184,6 +184,12 @@ export default class MapScreen extends React.Component{
                         size={30}
                         style={{backgroundColor: 'white', marginTop: 40}}
                         onPress={() => {this.getActiveJobs(); this.loadCompletedJobs()}}/>
+                        <IconButton
+                        icon={'plus'}
+                        color={'#CA3541'}
+                        size={30}
+                        style={{backgroundColor: 'white', marginTop: 40}}
+                        onPress={() => {this.props.navigation.navigate('Job')}}/>
                     </View>
                 </View>
             </Provider>
@@ -205,7 +211,7 @@ const styles = StyleSheet.create({
       ...StyleSheet.absoluteFillObject,
   },
     interactionLayer:{
-      flexDirection: 'column',
+      flexDirection: 'row',
         backgroundColor: 'transparent',
         justifyContent: 'flex-end'
     },

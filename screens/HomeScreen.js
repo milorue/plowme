@@ -71,7 +71,38 @@ export default class HomeScreen extends React.Component{
         this.setState({finalizeDialog: false})
     }
 
-    modifyFinalizeDialog(id){
+    modifyFinalizedJob(){
+        this.deleteAssignedJob(this.state.finalizedId);
+        const stitchAppClient = Stitch.defaultAppClient;
+        const mongoClient = stitchAppClient.getServiceClient(
+            RemoteMongoClient.factory,
+            'plow-me'
+        );
+        const db = mongoClient.db('plowme')
+        const ass_job = db.collection('assigned_jobs')
+        const mod_job = this.state.finalizedJob
+        ass_job.insertOne({
+            userId: mod_job.userId,
+            title: mod_job.title,
+            assigned: true,
+            active: false,
+            completed: false,
+            clearRating: this.state.clearRating,
+            start: mod_job.start,
+            end: mod_job.end,
+            startMetaData: mod_job.startMetaData,
+            endMetaData: mod_job.endMetaData,
+            date: mod_job.date,
+        }).then(()=>{
+            this.refreshJobs();
+            this.closeFinalizeDialog();
+        }
+
+        ).catch(err =>{
+            console.warn(err)
+            console.log('Error modifying Job')
+        })
+
     }
 
     determineFill = (rating) =>{
@@ -111,6 +142,7 @@ export default class HomeScreen extends React.Component{
                     </Dialog.Content>
                     <Dialog.Actions>
                         <Button onPress={this.closeFinalizeDialog}>Cancel</Button>
+                        <Button onPress={() =>{this.modifyFinalizedJob()}}>Re-Assign</Button>
                         <Button onPress={() =>{this.createCompleteJob(this.state.finalizedId); this.closeFinalizeDialog()}}>Finalize</Button>
                     </Dialog.Actions>
 

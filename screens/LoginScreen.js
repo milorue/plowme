@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, Dimensions} from 'react-native'
-import {TextInput, Caption, Button} from "react-native-paper";
+import {TextInput, Caption, Button,Title} from "react-native-paper";
 import {AnonymousCredential, Stitch, UserPasswordCredential} from "mongodb-stitch-react-native-sdk"
+import appLogo from '../assets/appLogo.png'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -55,8 +56,12 @@ export default class LoginScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
+                <Title>PlowIt</Title>
+
+                    <Image source={appLogo} style={{width: 150, height: 150}}/>
+
                 <Button icon={'login'} mode={'contained'}
-                onPress={() => this.signIn()}>Sign In</Button>
+                onPress={() => this.signIn()} color={'lightgrey'}>Sign In</Button>
             </View>
         )
     }

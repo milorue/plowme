@@ -7,6 +7,7 @@ import MapScreen from "../screens/MapScreen";
 
 import {IconButton} from "react-native-paper";
 import JobScreen from "../screens/JobScreen";
+import HazardScreen from "../screens/HazardScreen";
 
 const LoginStack = createStackNavigator({
     Login: {
@@ -39,7 +40,12 @@ const MapStack = createStackNavigator({
         navigationOptions:{
             headerShown: false,
         }
-    }
+    },
+    Hazards:{
+        screen: HazardScreen,
+        navigationOptions:{
+            headerShown: false,
+        }}
 })
 
 const TabNavigator = createMaterialBottomTabNavigator({
@@ -50,8 +56,8 @@ const TabNavigator = createMaterialBottomTabNavigator({
             tabBarIcon: <IconButton
             icon={'home'}
             color={'white'}
-            size={30}
-            style={{paddingBottom: 25}}/>
+            size={20}
+            style={{paddingBottom: 30}}/>
         }
     },
     Map:{
@@ -59,15 +65,27 @@ const TabNavigator = createMaterialBottomTabNavigator({
         navigationOptions:{
             tabBarColor: 'white',
             tabBarIcon: <IconButton
-            icon={'map-marker'}
+            icon={'map-marker-path'}
             color={'white'}
-            size={30}
-            style={{paddingBottom: 25}}/>
+            size={20}
+            style={{paddingBottom: 30}}/>
+        },
+
+    },
+    Hazards:{
+        screen: HazardScreen,
+        navigationOptions:{
+            tabBarColor: 'white',
+            tabBarIcon: <IconButton
+            icon={'map-marker'}
+            color={'#CA3541'}
+            size={20}
+            style={{paddingBottom: 30}}/>
         }
     }
 },
     {
-        barStyle: {backgroundColor: '#000556'}
+        barStyle: {backgroundColor: '#000556', height: 60}
     });
 
 export default createStackNavigator({
