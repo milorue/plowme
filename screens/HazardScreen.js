@@ -253,7 +253,7 @@ export default class HazardScreen extends React.Component{
                             numberOfLines={5}/>
                         </View>
                             <View style={{backgroundColor: 'lightgrey', marginVertical: 10, paddingHorizontal: width/10, width: width/1.4, alignItems: 'center', paddingVertical: 20}}>
-                                <Button mode={'contained'} color={'#CA3541'} icon={'plus'} onPress={() => {this.createMarker(); this.hideModal()}}>Submit Hazard</Button>
+                                <IconButton color={'#CA3541'} icon={'plus'} size={35} style={{backgroundColor: 'white'}} onPress={() => {this.createMarker(); this.hideModal()}}>Submit Hazard</IconButton>
                             </View>
                             </ScrollView>
                     </View>
