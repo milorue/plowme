@@ -141,13 +141,15 @@ export default class HazardScreen extends React.Component{
             date: new Date(),
             recent: true,
         }).then(()=>{
+
             this.setState({name: ''});
             this.setState({description: ''});
             this.setState({type: ''});
             this.setState({image: null});
             this.setState({addedLatitude: null});
             this.setState({addedLongitude: null});
-            console.log('insert marker success')
+
+            console.log('inserted marker')
             this.loadMarkers();
         })
             .catch(err => {
@@ -251,7 +253,7 @@ export default class HazardScreen extends React.Component{
                             numberOfLines={5}/>
                         </View>
                             <View style={{backgroundColor: 'lightgrey', marginVertical: 10, paddingHorizontal: width/10, width: width/1.4, alignItems: 'center', paddingVertical: 20}}>
-                                <Button mode={'contained'} color={'#DE606D'} icon={'plus'} onPress={() => {this.createMarker(); this.hideModal()}}>Submit Feature</Button>
+                                <Button mode={'contained'} color={'#CA3541'} icon={'plus'} onPress={() => {this.createMarker(); this.hideModal()}}>Submit Hazard</Button>
                             </View>
                             </ScrollView>
                     </View>

@@ -283,11 +283,12 @@ export default class HomeScreen extends React.Component{
                 return(
                     <List.Item key={jobInfo._id}
                     title={'Job ID: ' + jobInfo._id}
-                    description={jobInfo.title}
+                    description={jobInfo.startMetaData.address + ' ' + jobInfo.startMetaData.city + ', ' + jobInfo.startMetaData.state + ' ' + jobInfo.startMetaData.zipcode + ' ➡️ ' +
+                    jobInfo.endMetaData.address + ' ' + jobInfo.endMetaData.city + ', ' + jobInfo.endMetaData.state + ' ' + jobInfo.endMetaData.zipcode}
                     left={props => <List.Icon {...props} icon={'checkbox-blank-circle-outline'} color={this.determineRatingColor(jobInfo.clearRating)}/>}
                     right={props => <IconButton {...props} icon={'delete'} color={'#92262F'} onPress={() =>{this.openDeleteDialog(jobInfo._id)}}/>}
                     style={{backgroundColor: 'white', margin: 5, borderRadius: 5}}
-                    titleStyle={{fontSize: 10}}
+                    titleStyle={{fontSize: 13, backgroundColor: '#6744BB', borderRadius: 5, padding: 5, color: 'white'}}
                     onPress={() =>{this.openActiveModal(jobInfo._id)}}/>
                 )
             })
@@ -315,11 +316,12 @@ export default class HomeScreen extends React.Component{
                 return(
                     <List.Item key={jobInfo._id}
                     title={'Job ID: ' + jobInfo._id}
-                    description={jobInfo.title}
+                    description={jobInfo.startMetaData.address + ' ' + jobInfo.startMetaData.city + ', ' + jobInfo.startMetaData.state + ' ' + jobInfo.startMetaData.zipcode + ' ➡️ ' +
+                    jobInfo.endMetaData.address + ' ' + jobInfo.endMetaData.city + ', ' + jobInfo.endMetaData.state + ' ' + jobInfo.endMetaData.zipcode}
                     left={props => <List.Icon {...props} icon={'checkbox-blank-circle-outline'} color={this.determineRatingColor(jobInfo.clearRating)}/>}
                     right={ props => <IconButton {...props} icon={'delete'} color={'#92262F'} onPress={() => {this.deleteActiveJob(jobInfo._id)}}/>}
                     style={{backgroundColor: 'white', margin: 5, borderRadius: 5}}
-                    titleStyle={{fontSize: 10}}
+                    titleStyle={{fontSize: 13, backgroundColor: '#44BBA3', borderRadius: 5, padding: 5}}
                     onPress={() => {this.openFinalizeDialog(jobInfo._id)}}/>
                 )
             })
@@ -366,11 +368,12 @@ export default class HomeScreen extends React.Component{
             return this.state.completedJobs.map((jobInfo) =>{
                 return(
                     <List.Item key={jobInfo._id}
-                    title={'Job: ID: ' + jobInfo._id}
-                    description={jobInfo.title}
+                    title={'Job ID: ' + jobInfo._id}
+                    description={jobInfo.startMetaData.address + ' ' + jobInfo.startMetaData.city + ', ' + jobInfo.startMetaData.state + ' ' + jobInfo.startMetaData.zipcode + ' ➡️ ' +
+                    jobInfo.endMetaData.address + ' ' + jobInfo.endMetaData.city + ', ' + jobInfo.endMetaData.state + ' ' + jobInfo.endMetaData.zipcode}
                     left={props => <List.Icon {...props} icon={'check-circle'} color={this.determineRatingColor(jobInfo.clearRating)}/>}
                     style={{backgroundColor: 'white', margin: 5, borderRadius: 5}}
-                    titleStyle={{fontSize: 10}}/>
+                    titleStyle={{fontSize: 13, backgroundColor: '#BB445C', borderRadius: 5, padding: 5, color: 'white'}}/>
                 )
             })
         }
