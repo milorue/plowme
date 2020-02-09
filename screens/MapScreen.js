@@ -114,7 +114,7 @@ export default class MapScreen extends React.Component{
                     <MapViewDirections key={jobInfo._id} apikey={ apiKey}
                         origin={{latitude: jobInfo.start.lat, longitude: jobInfo.start.lng}}
                         destination={{latitude: jobInfo.end.lat, longitude: jobInfo.end.lng}}
-                    strokeWidth={1}
+                    strokeWidth={3}
                     strokeColor={this.determineRatingColor(jobInfo.clearRating)}/>
                 )
             })
