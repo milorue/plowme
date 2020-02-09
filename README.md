@@ -3,6 +3,8 @@
 This project was built in 23 hours from 1:00 PM - 12:00PM **(02-08-2020 -> 02-09-2020)** so please be kind if you choose to utilize it as its
 most definitely full of bugs and ineffeciencies.
 
+You need to install the expo app and go to: **https://expo.io/@mrue/plowit** to download this app.
+
 ### FAQ
 
 1. **What is plowme?**
