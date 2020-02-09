@@ -222,6 +222,8 @@ export default class HomeScreen extends React.Component{
             'plow-me'
         );
 
+        this.setState({currUser: stitchAppClient.auth.user.id})
+
         this.setState({mongoClient: mongoClient})
     }
 
@@ -632,7 +634,7 @@ export default class HomeScreen extends React.Component{
                     <Appbar.Header style={{ marginBottom: 10, flexDirection: 'row', alignContent: 'center', backgroundColor: 'white'}}>
                     <Appbar.Action icon={'menu'} onPress={() => console.log('Settings Press')} color={'black'}/>
                     <Appbar.Action icon={'truck'} onPress={() => console.log('Account Press')} color={'black'}/>
-                    <Appbar.Content title={'Truck'} subtitle={'ID: AD4R2T78S'}/>
+                    <Appbar.Content title={'Truck'} subtitle={'ID: ' + this.state.currUser}/>
                     </Appbar.Header>
 
                     {this.renderActiveModal()}

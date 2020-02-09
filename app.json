@@ -26,7 +26,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "A Snow plowing reporting application for HackBU 2020",
+    "description": "A snow plow job management and hazard reporting application\n\nBuilt during HackBU 2020 in Bingamton, NY",
     "githubUrl": "https://github.com/milorue/plowme"
   }
 }
